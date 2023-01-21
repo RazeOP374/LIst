@@ -8,8 +8,8 @@ import (
 )
 
 type UserService struct {
-	UserName string `form:"user_name"json:"user_name" binding:"required,min=3,max=8"`
-	Password string `form:"password"json:"password" binding:"required,min=5,max=11"`
+	UserName string `form:"user_name" json:"user_name" binding:"required,min=3,max=8"`
+	Password string `form:"password"  json:"password" binding:"required,min=5,max=11"`
 }
 
 func (Useas *UserService) Login() serializer.Response {
@@ -32,7 +32,7 @@ func (Useas *UserService) Login() serializer.Response {
 			Message: "密码错误",
 		}
 	}
-	token, err := utils.GenerateToken(user.ID, Useas.UserName, Useas.Password)
+	token, err := utils.GenerateToken(user.ID, Useas.UserName)
 	if err != nil {
 		return serializer.Response{
 			Status:  500,

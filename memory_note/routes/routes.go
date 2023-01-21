@@ -2,6 +2,7 @@ package routes
 
 import (
 	"GOproject/GIT/memory_note/api"
+	"GOproject/GIT/memory_note/middleware"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
@@ -15,6 +16,11 @@ func NewRouter() *gin.Engine {
 	{
 		v1.POST("user/register", api.UserRegister)
 		v1.POST("user/login", api.UserLogin)
+		authed := v1.Group("/")
+		authed.Use(middleware.JWT())
+		{
+			authed.POST("task", api.CreateTask)
+		}
 	}
 	return r
 }

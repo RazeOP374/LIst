@@ -7,20 +7,22 @@ import (
 
 func UserRegister(e *gin.Context) {
 	var userRegiseter service.UserService
-	if err := e.ShouldBind(&userRegiseter); err == nil {
+	err := e.ShouldBind(&userRegiseter)
+	if err == nil {
 		res := userRegiseter.Register()
 		e.JSON(200, res)
 	} else {
-		e.JSON(400, err)
+		e.JSON(400, ErrorResponse(err))
 	}
 }
 func UserLogin(e *gin.Context) {
 	var userLoginSer service.UserService
-	if err := e.ShouldBind(&userLoginSer); err == nil {
+	err := e.ShouldBind(&userLoginSer)
+	if err == nil {
 		res := userLoginSer.Login()
 		e.JSON(200, res)
 	} else {
-		e.JSON(400, err)
+		e.JSON(400, ErrorResponse(err))
 	}
 
 }
