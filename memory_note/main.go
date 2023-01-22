@@ -6,7 +6,6 @@ import (
 )
 
 func main() {
-	// http://localhost:3000/swagger/index.html
 	config.Init()
 	r := routes.NewRouter()
 	_ = r.Run(config.HttpPort)
