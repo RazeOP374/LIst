@@ -6,10 +6,12 @@ type Response struct {
 	Message string      `json:"message"`
 	Error   string      `json:"error"`
 }
+
 type TokenData struct {
 	User  interface{} `json:"user"`
 	Token string      `json:"token"`
 }
+
 type DataList struct {
 	Item  interface{} `json:"item"`
 	Total uint        `json:"total"`

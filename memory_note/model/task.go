@@ -10,5 +10,5 @@ type Task struct {
 	Status    int    `gorm:"default:0"`
 	Content   string `grom:"type:longtext"`
 	StartTime int64
-	EndTime   int64
+	EndTime   int64 `gorm:"default:0"`
 }
